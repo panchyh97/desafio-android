@@ -20,7 +20,7 @@ class PullRequestViewHolder(
         //binding.txtOpenPullRequestAmount.text = item.openPullRequestAmount.toString()
         //binding.txtClosedPullRequestAmount.text = item.closedPullRequestAmount.toString()
 
-        Picasso.get().load(item.userInfo.userAvatarUrl).into(binding.ivUser)
+        Picasso.get().load(item.userInfo.userAvatarUrl).into(binding.ivPullRequestUserImage)
 
         binding.txtPullRequestTitle.text = item.pullRequestTitle
 

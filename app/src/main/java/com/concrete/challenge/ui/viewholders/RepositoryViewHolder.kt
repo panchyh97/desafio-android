@@ -18,7 +18,7 @@ class RepositoryViewHolder(
 
     fun bind(item: RepositoryItem) {
 
-        Picasso.get().load(item.repositoryOwner.userAvatarUrl).into(binding.ivImageUser)
+        Picasso.get().load(item.repositoryOwner.userAvatarUrl).into(binding.ivRepositoryUserImage)
         
         val formatter = DecimalFormat("#,###")
         val forksAmount = item.forksAmount
