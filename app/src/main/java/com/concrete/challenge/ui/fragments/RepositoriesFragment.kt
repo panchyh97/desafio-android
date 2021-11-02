@@ -29,6 +29,7 @@ class RepositoriesFragment : Fragment() {
     private val userViewModel: UserViewModel by viewModel()
 
     private lateinit var rvRepository: RecyclerView
+    private lateinit var vfRepository: ViewFlipper
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,6 +37,7 @@ class RepositoriesFragment : Fragment() {
     ): View {
         val view = inflater.inflate(R.layout.fragment_repositories, container, false)
         rvRepository = view.findViewById(R.id.rvRepository)
+        vfRepository = view.findViewById(R.id.viewFlipper)
 
         return view
     }
@@ -50,6 +52,22 @@ class RepositoriesFragment : Fragment() {
         rvRepository.addItemDecoration(dividerItemDecoration)
 
         initView()
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        if (savedInstanceState != null) {
+            val flipperPosition = savedInstanceState.getInt("VF_POS")
+            vfRepository.displayedChild = flipperPosition
+        }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+
+        val position = vfRepository.displayedChild
+        outState.putInt("VF_POS", position)
     }
 
     private fun initView() {
