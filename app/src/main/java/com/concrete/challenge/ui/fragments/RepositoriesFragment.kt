@@ -22,9 +22,12 @@ import com.concrete.challenge.presentation.viewmodel.UserViewModel
 import com.concrete.challenge.utils.Constants.TAG
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
+private const val REPOSITORIES_LIST_CONTENT = 1
+
 class RepositoriesFragment : Fragment() {
 
     private val adapter by lazy { RepositoryAdapter(manager = RepositoryManager()) }
+
     private val repositoryViewModel: RepositoryViewModel by viewModel()
     private val userViewModel: UserViewModel by viewModel()
 
@@ -54,22 +57,6 @@ class RepositoriesFragment : Fragment() {
         initView()
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        if (savedInstanceState != null) {
-            val flipperPosition = savedInstanceState.getInt("VF_POS")
-            vfRepository.displayedChild = flipperPosition
-        }
-    }
-
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-
-        val position = vfRepository.displayedChild
-        outState.putInt("VF_POS", position)
-    }
-
     private fun initView() {
         initRecyclerView()
         initObservers()
@@ -92,15 +79,12 @@ class RepositoriesFragment : Fragment() {
     }
 
     private fun addRepositories(repositoriesResponse: RepositoriesResponse?) {
-
-        val viewFlipper = view?.findViewById<ViewFlipper>(R.id.viewFlipper)
-
         if (repositoriesResponse != null) {
             val item = repositoriesResponse.repositoriesEntityList.map {
                     repository -> repository.toRepositoryItem()
             }
 
-            viewFlipper?.showNext()
+            vfRepository.displayedChild = REPOSITORIES_LIST_CONTENT
             adapter.setItems(item)
         }
     }
