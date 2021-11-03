@@ -22,13 +22,17 @@ import com.concrete.challenge.presentation.viewmodel.UserViewModel
 import com.concrete.challenge.utils.Constants.TAG
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
+private const val REPOSITORIES_LIST_CONTENT = 1
+
 class RepositoriesFragment : Fragment() {
 
     private val adapter by lazy { RepositoryAdapter(manager = RepositoryManager()) }
+
     private val repositoryViewModel: RepositoryViewModel by viewModel()
     private val userViewModel: UserViewModel by viewModel()
 
     private lateinit var rvRepository: RecyclerView
+    private lateinit var vfRepository: ViewFlipper
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,6 +40,7 @@ class RepositoriesFragment : Fragment() {
     ): View {
         val view = inflater.inflate(R.layout.fragment_repositories, container, false)
         rvRepository = view.findViewById(R.id.rvRepository)
+        vfRepository = view.findViewById(R.id.viewFlipper)
 
         return view
     }
@@ -74,15 +79,12 @@ class RepositoriesFragment : Fragment() {
     }
 
     private fun addRepositories(repositoriesResponse: RepositoriesResponse?) {
-
-        val viewFlipper = view?.findViewById<ViewFlipper>(R.id.viewFlipper)
-
         if (repositoriesResponse != null) {
             val item = repositoriesResponse.repositoriesEntityList.map {
                     repository -> repository.toRepositoryItem()
             }
 
-            viewFlipper?.showNext()
+            vfRepository.displayedChild = REPOSITORIES_LIST_CONTENT
             adapter.setItems(item)
         }
     }
