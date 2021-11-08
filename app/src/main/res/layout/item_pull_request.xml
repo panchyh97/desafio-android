@@ -17,87 +17,86 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
-            android:id="@+id/lnrLytContainer"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
+            android:layout_height="match_parent">
 
-                <TextView
-                    android:id="@+id/txtPullRequestTitle"
+            <TextView
+                android:id="@+id/txtPullRequestTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                android:textColor="@color/purple_700"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="@string/pull_request_title"/>
+
+            <TextView
+                android:id="@+id/txtPullRequestBody"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtPullRequestTitle"
+                tools:text="@string/pull_request_body"/>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView2"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                app:cardCornerRadius="24dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtPullRequestBody">
+
+                <ProgressBar
+                    android:id="@+id/pbPullRequestUserImage"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/pull_request_title"
-                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
-                    android:textColor="@color/purple_700"
-                    android:textStyle="bold" />
+                    android:layout_height="match_parent" />
 
-                <TextView
-                    android:id="@+id/txtPullRequestBody"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/pull_request_body"
-                    android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
-                    android:textColor="@color/black" />
+                <ImageView
+                    android:id="@+id/ivPullRequestUserImage"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_gravity="center"
+                    android:contentDescription="@string/desc"
+                    tools:srcCompat="@tools:sample/avatars" />
 
-                <LinearLayout
-                    android:id="@+id/lnrLytAmounts"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:paddingTop="8dp">
+            </androidx.cardview.widget.CardView>
 
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        android:layout_gravity="center"
-                        app:cardCornerRadius="24dp">
+            <TextView
+                android:id="@+id/txtUsername"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:layout_marginStart="8dp"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+                android:textColor="@color/purple_500"
+                app:layout_constraintStart_toEndOf="@+id/cardView2"
+                app:layout_constraintTop_toBottomOf="@+id/txtPullRequestBody"
+                tools:text="@string/username"/>
 
-                        <ProgressBar
-                            android:id="@+id/pbPullRequestUserImage"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent" />
+            <TextView
+                android:id="@+id/txtUserName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@string/user_name"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+                app:layout_constraintStart_toEndOf="@+id/cardView2"
+                app:layout_constraintTop_toBottomOf="@+id/txtUsername" />
 
-                        <ImageView
-                            android:id="@+id/ivPullRequestUserImage"
-                            android:layout_width="48dp"
-                            android:layout_height="48dp"
-                            android:layout_gravity="center"
-                            android:contentDescription="@string/desc"
-                            tools:srcCompat="@tools:sample/avatars" />
-
-                    </androidx.cardview.widget.CardView>
-
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="48dp"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="2dp"
-                        android:gravity="center_vertical"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/txtUsername"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/username"
-                            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
-                            android:textColor="@color/purple_500" />
-
-                        <TextView
-                            android:id="@+id/txtUserName"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/user_name"
-                            android:textAppearance="@style/TextAppearance.MaterialComponents.Caption" />
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.card.MaterialCardView>
 
