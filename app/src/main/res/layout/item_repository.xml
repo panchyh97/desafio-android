@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:paddingBottom="8dp">
@@ -17,134 +18,139 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <!-- Container -->
-        <LinearLayout
-            android:id="@+id/lnrLytContainer"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:baselineAligned="false">
+            android:layout_height="match_parent">
 
             <!-- Left side -->
-            <LinearLayout
-                android:id="@+id/lnrLytLeftSide"
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/txtRepositoryName"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight=".25"
-                android:gravity="start"
-                android:orientation="vertical"
-                android:padding="16dp">
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                android:textColor="@color/purple_700"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="@string/repository_name" />
 
-                <TextView
-                    android:id="@+id/txtRepositoryName"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/repository_name"
-                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
-                    android:textColor="@color/purple_700"
-                    android:textStyle="bold" />
+            <TextView
+                android:id="@+id/txtRepositoryDescription"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="@id/guideline2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtRepositoryName"
+                tools:text="@string/repository_description" />
 
-                <TextView
-                    android:id="@+id/txtRepositoryDescription"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/repository_description"
-                    android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
-                    android:textColor="@color/black" />
+            <ImageView
+                android:id="@+id/ivForks"
+                android:contentDescription="@string/fork_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:paddingTop="8dp"
+                android:src="@drawable/ic_code_fork_icon"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtRepositoryDescription" />
 
-                <LinearLayout
-                    android:id="@+id/lnrLytAmounts"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:paddingTop="8dp">
+            <TextView
+                android:id="@+id/txtForksAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="4dp"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                android:textColor="@color/yellow_mustard"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/ivForks"
+                app:layout_constraintTop_toBottomOf="@+id/txtRepositoryDescription"
+                tools:text="@string/forks_amount"/>
 
-                    <ImageView
-                        android:id="@+id/ivForks"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/ic_code_fork_icon"
-                        android:contentDescription="@string/fork_desc"/>
+            <ImageView
+                android:id="@+id/ivStars"
+                android:contentDescription="@string/star_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:paddingTop="6dp"
+                android:src="@drawable/ic_star_icon"
+                app:layout_constraintStart_toEndOf="@+id/txtForksAmount"
+                app:layout_constraintTop_toBottomOf="@+id/txtRepositoryDescription" />
 
-                    <TextView
-                        android:id="@+id/txtForksAmount"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/forks_amount"
-                        android:textColor="@color/yellow_mustard"
-                        android:textStyle="bold"
-                        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"/>
-
-                    <ImageView
-                        android:id="@+id/ivStars"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/ic_star_icon"
-                        android:layout_marginStart="24dp"
-                        android:contentDescription="@string/star_desc"/>
-
-                    <TextView
-                        android:id="@+id/txtStarGazersAmount"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/forks_amount"
-                        android:textColor="@color/yellow_mustard"
-                        android:textStyle="bold"
-                        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"/>
-
-                </LinearLayout>
-
-            </LinearLayout>
+            <TextView
+                android:id="@+id/txtStarGazersAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="4dp"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                android:textColor="@color/yellow_mustard"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/ivStars"
+                app:layout_constraintTop_toBottomOf="@+id/txtRepositoryDescription"
+                tools:text="@string/star_gazers_amount"/>
 
             <!-- Right side -->
-            <LinearLayout
-                android:id="@+id/lnrLytRightSide"
-                android:layout_width="match_parent"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="16dp"
+                app:cardCornerRadius="24dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/guideline2"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ProgressBar
+                    android:id="@+id/pbRepositoryUserImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+                <ImageView
+                    android:id="@+id/ivRepositoryUserImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@string/desc" />
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/txtUsername"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight=".75"
-                android:padding="16dp"
-                android:layout_gravity="center"
-                android:orientation="vertical">
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+                android:textColor="@color/purple_500"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/guideline2"
+                app:layout_constraintTop_toBottomOf="@+id/cardView"
+                tools:text="@string/username"/>
 
-                <androidx.cardview.widget.CardView
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:layout_gravity="center"
-                    app:cardCornerRadius="24dp">
+            <TextView
+                android:id="@+id/txtUserName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/guideline2"
+                app:layout_constraintTop_toBottomOf="@+id/txtUsername"
+                tools:text="@string/user_name"/>
 
-                    <ProgressBar
-                        android:id="@+id/pbRepositoryUserImage"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
+            <!-- Guideline -->
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.7" />
 
-                    <ImageView
-                        android:id="@+id/ivRepositoryUserImage"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:scaleType="centerCrop"
-                        android:contentDescription="@string/desc"/>
-
-                </androidx.cardview.widget.CardView>
-
-                <TextView
-                    android:id="@+id/txtUsername"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/username"
-                    android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
-                    android:textColor="@color/purple_500"
-                    android:gravity="center"/>
-
-                <TextView
-                    android:id="@+id/txtUserName"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/user_name"
-                    android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
-                    android:gravity="center"/>
-
-            </LinearLayout>
-
-        </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.card.MaterialCardView>
 
