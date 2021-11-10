@@ -1,0 +1,10 @@
+{
+    "request": {
+        "url": "/route",
+        "method": "GET"
+    },
+    "response": {
+        "status": 200,
+        "body": "Hola! Esto no es el servidor real, es Wiremock ;-)"
+    }
+}
