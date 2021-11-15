@@ -10,7 +10,6 @@ import android.view.ViewGroup
 import android.widget.ViewFlipper
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.concrete.challenge.BuildConfig
 import com.concrete.challenge.R
 import com.concrete.challenge.data.PullRequestEntity
 import com.concrete.challenge.databinding.FragmentPullRequestBinding

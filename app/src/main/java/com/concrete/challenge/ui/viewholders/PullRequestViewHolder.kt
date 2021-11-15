@@ -17,8 +17,6 @@ class PullRequestViewHolder(
     private val binding = ItemPullRequestBinding.bind(view)
 
     fun bind(item: PullRequestEntity) {
-        //binding.txtOpenPullRequestAmount.text = item.openPullRequestAmount.toString()
-        //binding.txtClosedPullRequestAmount.text = item.closedPullRequestAmount.toString()
 
         Picasso.get().load(item.userInfo.userAvatarUrl).into(binding.ivPullRequestUserImage)
 
@@ -30,7 +28,6 @@ class PullRequestViewHolder(
         }
 
         binding.txtUsername.text = item.userInfo.username
-        binding.txtUserName.text = item.userInfo.userName
 
         binding.pullRequestCard.setOnClickListener {
             manager.onPullRequestClicked(item)

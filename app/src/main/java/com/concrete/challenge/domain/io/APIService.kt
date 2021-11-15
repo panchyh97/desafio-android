@@ -1,7 +1,6 @@
 package com.concrete.challenge.domain.io
 
 import com.concrete.challenge.data.PullRequestEntity
-import com.concrete.challenge.data.UserEntity
 import com.concrete.challenge.domain.io.response.RepositoriesResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -13,11 +12,6 @@ interface APIService {
     suspend fun getRepositories(
         @Query("page") page: Int
     ): RepositoriesResponse
-
-    @GET("users")
-    suspend fun getUser(
-        @Query("username") username: String
-    ): List<UserEntity>
 
     @GET("repos/{owner}/{repo}/pulls")
     suspend fun getPullRequests(

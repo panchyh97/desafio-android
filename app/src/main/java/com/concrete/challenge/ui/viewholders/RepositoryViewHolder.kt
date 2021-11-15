@@ -25,7 +25,6 @@ class RepositoryViewHolder(
         val starsAmount = item.starsAmount
 
         binding.txtUsername.text = item.repositoryOwner.username
-        binding.txtUserName.text = item.repositoryOwner.userName
         binding.txtRepositoryName.text = item.repositoryName
         binding.txtRepositoryDescription.text = item.repositoryDescription
         binding.txtForksAmount.text = formatter.format(forksAmount)
