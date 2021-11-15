@@ -1,0 +1,112 @@
+{
+    "request": {
+        "url": "/search/repositories?q=language:Java&sort=stars&page=1",
+        "method": "GET"
+    },
+    "response": {
+        "status": 200,
+        "fixedDelayMilliseconds": 1000,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "jsonBody": {
+            "total_count": 10101,
+            "items": [
+                {
+                    "id": 121395510,
+                    "name": "CS-Notes",
+                    "private": false,
+                    "owner": {
+                        "login": "CyC2018",
+                        "id": 36260787,
+                        "avatar_url": "https://avatars.githubusercontent.com/u/36260787?v=4",
+                        "html_url": "https://github.com/CyC2018",
+                        "type": "User"
+                    },
+                    "description": ":books: 技术面试必备基础知识、Leetcode、计算机操作系统、计算机网络、系统设计",
+                    "updated_at": "2021-11-10T15:01:06Z",
+                    "pulls_url": "https://api.github.com/repos/CyC2018/CS-Notes/pulls{/number}",
+                    "stargazers_count": 141507,
+                    "language": "Java",
+                    "forks_count": 45255,
+                    "visibility": "public"
+                },
+                {
+                    "id": 132464395,
+                    "name": "JavaGuide",
+                    "private": false,
+                    "owner": {
+                        "login": "Snailclimb",
+                        "id": 29880145,
+                        "avatar_url": "https://avatars.githubusercontent.com/u/29880145?v=4",
+                        "html_url": "https://github.com/Snailclimb",
+                        "type": "User"
+                    },
+                    "description": "「Java学习+面试指南」一份涵盖大部分 Java 程序员所需要掌握的核心知识。准备 Java 面试，首选 JavaGuide！",
+                    "updated_at": "2021-11-12T17:07:57Z",
+                    "pulls_url": "https://api.github.com/repos/Snailclimb/JavaGuide/pulls{/number}",
+                    "stargazers_count": 113256,
+                    "language": "Java",
+                    "forks_count": 38702,
+                    "visibility": "public"
+                },
+                {
+                    "id": 22790488,
+                    "name": "java-design-patterns",
+                    "private": false,
+                    "owner": {
+                        "login": "iluwatar",
+                        "id": 582346,
+                        "avatar_url": "https://avatars.githubusercontent.com/u/582346?v=4",
+                        "html_url": "https://github.com/iluwatar",
+                        "type": "User"
+                    },
+                    "description": "Design patterns implemented in Java",
+                    "updated_at": "2021-11-12T15:31:10Z",
+                    "pulls_url": "https://api.github.com/repos/iluwatar/java-design-patterns/pulls{/number}",
+                    "stargazers_count": 71100,
+                    "language": "Java",
+                    "forks_count": 22164,
+                    "visibility": "public"
+                },
+                {
+                    "id": 160640094,
+                    "name": "LeetCodeAnimation",
+                    "private": false,
+                    "owner": {
+                        "login": "MisterBooo",
+                        "id": 15308811,
+                        "avatar_url": "https://avatars.githubusercontent.com/u/15308811?v=4",
+                        "html_url": "https://github.com/MisterBooo",
+                        "type": "User"
+                    },
+                    "description": "Demonstrate all the questions on LeetCode in the form of animation.（用动画的形式呈现解LeetCode题目的思路）",
+                    "updated_at": "2021-11-12T15:01:44Z",
+                    "pulls_url": "https://api.github.com/repos/MisterBooo/LeetCodeAnimation/pulls{/number}",
+                    "stargazers_count": 67667,
+                    "language": "Java",
+                    "forks_count": 12989,
+                    "visibility": "public"
+                },
+                {
+                    "id": 6296790,
+                    "name": "spring-boot",
+                    "private": false,
+                    "owner": {
+                        "login": "spring-projects",
+                        "id": 317776,
+                        "avatar_url": "https://avatars.githubusercontent.com/u/317776?v=4",
+                        "html_url": "https://github.com/spring-projects",
+                        "type": "Organization"
+                    },
+                    "description": "Spring Boot",
+                    "updated_at": "2021-11-12T14:53:02Z",
+                    "pulls_url": "https://api.github.com/repos/spring-projects/spring-boot/pulls{/number}",
+                    "stargazers_count": 58037,
+                    "forks_count": 34918,
+                    "visibility": "public"
+                }
+            ]
+        }
+    }
+}
