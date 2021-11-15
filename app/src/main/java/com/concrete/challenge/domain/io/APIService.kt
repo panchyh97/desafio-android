@@ -9,7 +9,7 @@ import retrofit2.http.Query
 
 interface APIService {
 
-    @GET("search/repositories?q=language:Java&sort=stars&page=1")
+    @GET("search/repositories?q=language:Java&sort=stars")
     suspend fun getRepositories(
         @Query("page") page: Int
     ): RepositoriesResponse

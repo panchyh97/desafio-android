@@ -1,0 +1,40 @@
+{
+    "request": {
+        "url": "/repos/CyC2018/CS-Notes/pulls",
+        "method": "GET"
+    },
+    "response": {
+        "status": 200,
+        "fixedDelayMilliseconds": 1000,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "jsonBody": [
+            {
+                "html_url": "https://github.com/CyC2018/CS-Notes/pull/1140",
+                "title": "Fix typo",
+                "user": {
+                    "login": "JimmyTinsley",
+                    "id": 37508117,
+                    "node_id": "MDQ6VXNlcjM3NTA4MTE3",
+                    "avatar_url": "https://avatars.githubusercontent.com/u/37508117?v=4",
+                    "gravatar_id": "",
+                    "url": "https://api.github.com/users/JimmyTinsley",
+                    "html_url": "https://github.com/JimmyTinsley",
+                    "followers_url": "https://api.github.com/users/JimmyTinsley/followers",
+                    "following_url": "https://api.github.com/users/JimmyTinsley/following{/other_user}",
+                    "gists_url": "https://api.github.com/users/JimmyTinsley/gists{/gist_id}",
+                    "starred_url": "https://api.github.com/users/JimmyTinsley/starred{/owner}{/repo}",
+                    "subscriptions_url": "https://api.github.com/users/JimmyTinsley/subscriptions",
+                    "organizations_url": "https://api.github.com/users/JimmyTinsley/orgs",
+                    "repos_url": "https://api.github.com/users/JimmyTinsley/repos",
+                    "events_url": "https://api.github.com/users/JimmyTinsley/events{/privacy}",
+                    "received_events_url": "https://api.github.com/users/JimmyTinsley/received_events",
+                    "type": "User",
+                    "site_admin": false
+                },
+                "body": "serverd -> served"
+            }
+        ]
+    }
+}

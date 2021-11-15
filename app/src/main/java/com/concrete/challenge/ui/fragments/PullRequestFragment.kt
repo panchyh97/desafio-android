@@ -70,7 +70,7 @@ class PullRequestFragment : Fragment() {
                 val urlPullRequests = result.getString("url")
 
                 val splitUrlPullRequests = urlPullRequests?.split(
-                    "${BuildConfig.BASE_URL}repos/", PULL_REQUEST_NUMBER, "/")
+                    "https://api.github.com/repos/", PULL_REQUEST_NUMBER, "/")
 
                 val owner = splitUrlPullRequests?.get(1)
                 val repo = splitUrlPullRequests?.get(2)
