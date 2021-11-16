@@ -11,11 +11,13 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.concrete.challenge.R
+import com.concrete.challenge.data.model.api.Response
 import com.concrete.challenge.ui.adapters.RepositoryAdapter
 import com.concrete.challenge.domain.io.response.RepositoriesResponse
 import com.concrete.challenge.presentation.model.RepositoryItem
 import com.concrete.challenge.presentation.toRepositoryItem
 import com.concrete.challenge.presentation.viewmodel.RepositoryViewModel
+import com.concrete.challenge.utils.isNotFound
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 private const val REPOSITORIES_LIST_CONTENT = 1
@@ -70,14 +72,27 @@ class RepositoriesFragment : Fragment() {
         repositoryViewModel.getRepositories()
     }
 
-    private fun addRepositories(repositoriesResponse: RepositoriesResponse?) {
-        if (repositoriesResponse != null) {
-            val item = repositoriesResponse.repositoriesEntityList.map {
-                    repository -> repository.toRepositoryItem()
-            }
+    private fun addRepositories(repositoriesResponse: Response<RepositoriesResponse>?) {
+        when (repositoriesResponse) {
+            is Response.OnSuccess -> repositoriesResponse.data?.let { handleSuccess(it) }
+            is Response.OnFailure -> handleError(repositoriesResponse.throwable)
+            is Response.OnLoading -> TODO()
+        }
+    }
 
-            vfRepository.displayedChild = REPOSITORIES_LIST_CONTENT
-            adapter.setItems(item)
+    private fun handleSuccess(data: RepositoriesResponse) {
+        val item = data.repositoriesEntityList.map {
+                repository -> repository.toRepositoryItem()
+        }
+
+        vfRepository.displayedChild = REPOSITORIES_LIST_CONTENT
+        adapter.setItems(item)
+    }
+
+    private fun handleError(throwable: Throwable): String {
+        return when {
+            throwable.isNotFound() -> "Error 404"
+            else -> "Unknown error"
         }
     }
 

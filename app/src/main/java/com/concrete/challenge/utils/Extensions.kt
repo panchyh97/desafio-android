@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.concrete.challenge.data.PullRequestEntity
+import com.concrete.challenge.data.model.api.Response
 import com.concrete.challenge.domain.io.response.RepositoriesResponse
 import com.concrete.challenge.utils.Constants.TAG
 import kotlinx.coroutines.Dispatchers
@@ -12,7 +13,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 fun ViewModel.callServiceRepositories(
-    liveData: MutableLiveData<RepositoriesResponse>,
+    liveData: MutableLiveData<Response<RepositoriesResponse>>,
     block: suspend () -> RepositoriesResponse
 ) {
     viewModelScope.launch(Dispatchers.Main) {
@@ -20,9 +21,9 @@ fun ViewModel.callServiceRepositories(
             withContext(Dispatchers.IO) { block.invoke() }
         }.onSuccess { response ->
             Log.i(TAG, response.toString())
-            liveData.postValue(response)
+            liveData.postValue(Response.OnSuccess(response))
         }.onFailure { throwable ->
-            liveData.postValue(null)
+            liveData.postValue(Response.OnFailure(throwable))
             Log.i(TAG, throwable.toString())
         }
     }
