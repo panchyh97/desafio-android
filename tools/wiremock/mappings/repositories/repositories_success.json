@@ -4,7 +4,7 @@
         "method": "GET"
     },
     "response": {
-        "status": 200,
+        "status": 500,
         "fixedDelayMilliseconds": 1000,
         "headers": {
           "Content-Type": "application/json"

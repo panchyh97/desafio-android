@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.ViewFlipper
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -12,15 +13,19 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.concrete.challenge.R
 import com.concrete.challenge.data.model.api.Response
+import com.concrete.challenge.domain.errors.HttpError
 import com.concrete.challenge.ui.adapters.RepositoryAdapter
 import com.concrete.challenge.domain.io.response.RepositoriesResponse
 import com.concrete.challenge.presentation.model.RepositoryItem
 import com.concrete.challenge.presentation.toRepositoryItem
 import com.concrete.challenge.presentation.viewmodel.RepositoryViewModel
+import com.concrete.challenge.utils.isInternalServerError
 import com.concrete.challenge.utils.isNotFound
+import com.concrete.challenge.utils.isTimeout
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 private const val REPOSITORIES_LIST_CONTENT = 1
+private const val ERROR_MESSAGE = 2
 
 class RepositoriesFragment : Fragment() {
 
@@ -30,6 +35,7 @@ class RepositoriesFragment : Fragment() {
 
     private lateinit var rvRepository: RecyclerView
     private lateinit var vfRepository: ViewFlipper
+    private lateinit var txtErrorMessage: TextView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,6 +44,7 @@ class RepositoriesFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_repositories, container, false)
         rvRepository = view.findViewById(R.id.rvRepository)
         vfRepository = view.findViewById(R.id.viewFlipper)
+        txtErrorMessage = view.findViewById(R.id.txtError)
 
         return view
     }
@@ -89,11 +96,26 @@ class RepositoriesFragment : Fragment() {
         adapter.setItems(item)
     }
 
-    private fun handleError(throwable: Throwable): String {
+    private fun handleError(throwable: Throwable) {
         return when {
-            throwable.isNotFound() -> "Error 404"
-            else -> "Unknown error"
+            throwable.isNotFound() -> httpErrorHandler(HttpError.NotFound)
+            throwable.isInternalServerError() -> httpErrorHandler(HttpError.InternalServerError)
+            throwable.isTimeout() -> httpErrorHandler(HttpError.Timeout)
+            else -> httpErrorHandler(HttpError.GenericError)
         }
+
+    }
+
+    private fun httpErrorHandler(error: HttpError) {
+        val errorMessage = when (error) {
+            is HttpError.NotFound -> "Información no encontrada (HTTP 400 ERROR)"
+            is HttpError.InternalServerError -> "Error en el servidor (HTTP 500 ERROR)"
+            is HttpError.Timeout -> "Tiempo de espera agotado (HTTP 504 ERROR)"
+            else -> "¡Ha ocurrido un error!"
+        }
+
+        vfRepository.displayedChild = ERROR_MESSAGE
+        txtErrorMessage.text = errorMessage
     }
 
     inner class RepositoryManager : RepositoryAdapter.AdapterManager {
